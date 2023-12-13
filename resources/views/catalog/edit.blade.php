@@ -22,7 +22,11 @@
 
 	            <div class="form-group">
 	            	<label for="docente_id">Docente</label>
-	               <input type="number" name="docente_id" value="{{ $proyecto['docente_id'] }}" id="docente_id">
+                    <select name="docente_id" id="docente_id">
+                        @foreach (App\Models\Docente::all()  as $docente)
+                            <option value="{{ $docente->id }}">{{ $docente->nombre . ' ' . $docente->apellidos }}</option>
+                        @endforeach
+                    </select>
 	            </div>
 
 	            <div class="form-group">
@@ -30,6 +34,12 @@
                     https://github.com/2DAW-CarlosIII/
 	               <input type="text" name="dominio" id="dominio" value="{{ $proyecto['dominio'] }}" class="form-control">
 	            </div>
+
+                <div class="form-group">
+                    <label for="calificacion">Calificacion</label>
+                    {{--TODO Actualizar el campo calificacion cuando el issue #211 este completado--}}
+                    <input type="number" name="calificacion" id="calificacion" value="5" min="1" max="10">
+                 </div>
 
 	            <div class="form-group">
 	               <label for="metadatos">Metadatos</label>
